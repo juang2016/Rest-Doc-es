@@ -1727,7 +1727,45 @@ paths:
       operationId: post-p
       responses:
         '200':
-          description: OK
+          description: |
+            **Parámetros**
+
+            | Nombre | Tipo | Descripción |
+            |-----------|------|-------------|
+            | login | string | Identificador del sitio a usar. |
+            | tranKey | string | Digest tranKey usando la `explicación provista` |
+            | nonce | string | Valor aleatorio generado por cada petición en BASE64 |
+            | seed | string | Fecha de generación de esta estructura en ISO 8601. |
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  login:
+                    type: string
+                    minLength: 1
+                  tranKey:
+                    type: string
+                    minLength: 1
+                  seed:
+                    type: string
+                    minLength: 1
+                  nonce:
+                    type: string
+                    minLength: 1
+                required:
+                  - login
+                  - tranKey
+                  - seed
+                  - nonce
+              examples:
+                ejemplo:
+                  value:
+                    login: 184053a1c182247d2f53964fdb109e00
+                    tranKey: Z2n5PGApfqBSkYQPAJAeDNzE1eY=
+                    seed: '2021-03-02T22:28:15+00:00'
+                    nonce: MjA0NjIzODY1Ng==
       description: |
         Estructura que contiene la información de autenticación del sitio generada de acuerdo al WSSE UsernameToken Profile 1.1
 
@@ -1735,7 +1773,15 @@ paths:
         https://www.oasis-open.org/committees/download.php/13392/wss-v1.1-spec-pr-UsernameTokenProfile-01.htm
 
         Usando PasswordDigest
+
         **PasswordDigest = Base64 ( SHA-256 ( nonce + seed + tranKey ) )**
+
+        `El login y el secretKey son suministrados por PlacetoPay`
+
+        `Esta estructura debe de ser enviada en cada petición realizada al servicio`
+
+         `El seed no puede tener diferencia de más de 5 minutos.`
+         
 
         **Solución de problemas**
 
@@ -1753,21 +1799,35 @@ paths:
         | 107  | Mala definición del UsernameToken (No cumple con el encabezado WSSE) |
         | 200  | Saltar el encabezado de autenticación SOAP |
         | 10001  | Contacte a Soporte |
+
+
+        En la parte derecha puede simular la generacion de la autenticación requerida para cada una de las solicitudes que se realicen a la pasarela de pagos (webcheckout), dicho método recibe un login y un trankey por médio de una solicitud POST, internamente se realiza el procesamiento de la información para retornar una structura JSON que puede ser copiada y pegada en las demás solicitudes dentro del objeto auth.
+
+        Cabe aclarar que éste método se provee cómo una ayuda para generar la estructura de autenticación de las solicitudes y no hace parte de los método de integración de webcheckout
+
+        url referencia autenticación: https://placetopay.github.io/web-checkout-api-docs/?shell#autenticacion
       requestBody:
         content:
           application/json:
             schema:
+              description: ''
               type: object
-              properties: {}
-        description: |
-          **Parámetros**
-
-          | Nombre | Tipo | Descripción |
-          |-----------|------|-------------|
-          | login | string | Identificador del sitio a usar. |
-          | tranKey | string | Digest tranKey usando la `explicación provista` |
-          | nonce | string | Valor aleatorio generado por cada petición en BASE64 |
-          | seed | string | Fecha de generación de esta estructura en ISO 8601. |
+              properties:
+                login:
+                  type: string
+                  minLength: 1
+                trankey:
+                  type: string
+                  minLength: 1
+              required:
+                - login
+                - trankey
+            examples:
+              Ejemplo:
+                value:
+                  login: 6dd490faf9cb87a9862245da41170ff2
+                  trankey: Q0nj0QeRN0h1EH3H
+        description: ''
     parameters: []
 components:
   schemas: {}
