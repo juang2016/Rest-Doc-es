@@ -1046,6 +1046,7 @@ paths:
                     surname: Wisozk
                     email: tesst@gmail.com
                     mobile: '3006108300'
+      description: 'Este servicio permite que se realice el cobro a la tarjeta del usuario ya tokenizada, los parámetros del instrument son variables, si no se pide tipo de crédito ni otp no es necesario enviar esas variables, payer es siempre requerido, buyer es opcional pero recomendado.'
   /gateway/process:
     post:
       summary: Procesamiento de transacción
