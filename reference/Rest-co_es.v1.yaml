@@ -317,7 +317,7 @@ paths:
             | cardTypes | string[] | Tipos de tarjeta soportados |
             | requireOtp | bool | Determina si se necesita un OTP para procesar. |
             | requireCvv2 | bool | Determina si se requiere obtener el CVV2 del usuario. |
-            | three DS3DSecure | string | Determina si. | la tarjeta requiere una autenticación previa con el servicio de 3DSecure (unsupported, required, optional) |
+            | three DS3DSecure | string | Determina si la tarjeta requiere una autenticación previa con el servicio de 3DSecure (unsupported, required, optional) |
             | credits | Credit[] | Arreglo de tipos de crédito disponibles, arreglo vacío si no es soportado por el proveedor. |
 
 
