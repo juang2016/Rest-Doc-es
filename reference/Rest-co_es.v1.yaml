@@ -32,6 +32,7 @@ paths:
             | type | string | Identifica el funcionamiento de la transacción AUTH_ONLY = Captura normal CAPTURE_ONLY = La transacción debe ser aprobada desde la consola |
             | refunded | bool | Determina si se ha realizado un reverso sobre esta transacción. |
             | lastDigits | string | Últimos 4 dígitos de la tarjeta empleada. |
+            | additional | array | Datos adicionales empleados en la transacción. |
           content:
             application/json:
               schema:
