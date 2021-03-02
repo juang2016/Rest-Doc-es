@@ -243,6 +243,24 @@ info:
     | refunded | bool | Determina si se ha realizado un reverso sobre esta transacción. |
     | lastDigits | string | Últimos 4 dígitos de la tarjeta empleada. |
     | additional | array | Datos adicionales empleados en la transacción. |
+
+    **Información adicional**
+
+    Números de tarjeta de pruebas
+
+    Es importante definir que estas tarjetas solo tienen dicho comportamiento en el ambiente de pruebas
+
+
+    | Franquicia | Número | Comportamiento |
+    |-----------|------|-------------|
+    | VISA | 4007000000027 | Aprueba |
+    | VISA | 41111111111111111 | Aprueba |
+    | VISA | 4212121212121214  | Pendiente |
+    | VISA | 4005580000000040  | Rechazada |
+    | MASTERCARD | 5424000000000015 | Aprueba |
+    | AMERICAN EXPRESS | 370000000000002 | Aprueba |
+    | DINERS  | 36018623456787 | Aprueba |
+    | CREDENCIAL | 5406251000000008 | Aprueba |
 servers:
   - url: 'https://test.placetopay.com/'
     description: Modo Pruebas
