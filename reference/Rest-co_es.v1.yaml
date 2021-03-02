@@ -59,6 +59,7 @@ info:
     Por ejemplo si la URL base fuese https://placetopay.com para consumir el servicio se solicitud de información se realiza un POST con los datos del ejemplo a la URL https://placetopay.com/gateway/information.
 
 
+    ###Estructuras de datos###
      
 servers:
   - url: 'https://test.placetopay.com/'
