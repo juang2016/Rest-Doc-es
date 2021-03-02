@@ -132,5 +132,47 @@ paths:
                       type: string
                     '':
                       type: string
+            examples:
+              Ejemplo:
+                value:
+                  auth:
+                    login: 6dd490faf9cb87a9862245da41170ff2
+                    tranKey: JUfKi8+W//kX43WZd8FcnNsdl7zkaeAQdmSOudWcVi0=
+                    nonce: MzgwYWYwMjc2ZWUzODA5YmI1MDQ1YmNjYzdlNzY1MTY=
+                    seed: '2021-03-02T17:03:50+01:00'
+                  locale: es_CO
+                  payment:
+                    reference: TEST_20171108_144400
+                    description: Prueba rest colombia.
+                    amount:
+                      currency: COP
+                      total: 1000
+                  ipAddress: 127.0.0.1
+                  userAgent: Mozilla/5.0 USER_AGENT HERE
+                  instrument:
+                    card:
+                      number: '4111111111111111'
+                      expirationMonth: '12'
+                      expirationYear: '22'
+                      cvv: '123'
+                    credit:
+                      code: '0'
+                      type: '00'
+                      groupCode: C
+                      installment: '1'
+                  payer:
+                    document: '8467451900'
+                    documentType: CC
+                    name: Miss Delia Schamberger Sr.
+                    surname: Wisozk
+                    email: tesst@gmail.com
+                    mobile: '3006108300'
+                  buyer:
+                    document: '8467451900'
+                    documentType: CC
+                    name: Miss Delia Schamberger Sr.
+                    surname: Wisozk
+                    email: tesst@gmail.com
+                    mobile: '3006108300'
 components:
   schemas: {}
