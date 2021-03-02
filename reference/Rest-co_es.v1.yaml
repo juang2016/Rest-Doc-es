@@ -1,0 +1,46 @@
+openapi: 3.0.0
+info:
+  title: Rest co_es
+  version: '1.0'
+servers:
+  - url: 'https://test.placetopay.com/'
+    description: Modo Pruebas
+paths:
+  /rest/gateway/query:
+    post:
+      summary: ''
+      operationId: post-rest-gateway-query
+      responses:
+        '200':
+          description: OK
+  /rest/gateway/information:
+    post:
+      summary: ''
+      operationId: post-rest-gateway-information
+      responses:
+        '200':
+          description: OK
+  /rest/gateway/process:
+    post:
+      summary: ''
+      operationId: post-rest-gateway-process
+      responses:
+        '200':
+          description: OK
+      description: ''
+  /gateway/process/:
+    post:
+      summary: Cobrar Tokenizacion
+      operationId: post-gateway-process
+      responses:
+        '200':
+          description: OK
+  /gateway/process:
+    post:
+      summary: Procesamiento de transacción
+      operationId: post-gateway-process
+      responses:
+        '200':
+          description: OK
+components:
+  schemas: {}
