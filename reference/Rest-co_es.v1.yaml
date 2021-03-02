@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   title: Rest co_es
   version: '1.0'
-  description: |-
+  description: |+
     Este servicio web y su arquitectura permite a cualquier aplicación conectarse a Place to Pay para procesar tarjetas, independiente del lenguaje de desarrollo.
 
     Para usar el servicio web, deberás tener un lenguaje de programación que pueda comunicarse con un servicio REST.
@@ -81,6 +81,50 @@ info:
     | reference | string(32) | Referencia para la solicitud de pago para vincular con el comercio. |
     | description | string | Descripción de la cuenta. |
     | amount | Amount | Detalle del monto a cobrar en la transacción. |
+
+
+    **Amount**
+
+    Estructura que contiene la información acerca del pago de la transacción requerida al servicio web
+
+    | Name | Type | Description |
+    |-----------|------|-------------|
+    | currency | string | Moneda acorde al **ISO 4217** (alphabetic code) |
+    | total | decimal | Valor total. |
+    | taxes | TaxDetail[] | Descripción de los impuestos. |
+    | details | AmountDetail[] | Descripción del importe total. |
+
+    **TaxDetail**
+
+    Estructura para almacenar información sobre un impuesto.
+
+    | Name | Type | Description |
+    |-----------|------|-------------|
+    | kind | string | Valor de clasificación, puede ser [valueAddedTax, exciseDuty, ice]. |
+    | amount | double | Valor discriminado. |
+    | base | double | Valor base. |
+
+
+    **AmountDetail**
+
+    Estructura para almacenar información sobre un valor adicional.
+
+    | Name | Type | Description |
+    |-----------|------|-------------|
+    | kind | string | Valor de clasificación, puede ser [discount, additional, vatDevolutionBase, shipping, handlingFee, insurance, giftWrap, subtotal, fee, tip] |
+    | amount | double | Valor discriminado. |
+
+    **Instrument**
+
+    Estructura que contiene la información acerca del medio de pago a usar en una transacción, esta estructura es variable de acuerdo a la solicitud que se genere, cada servicio requiere que se usen unos u otros datos.
+
+    | Name | Type | Description |
+    |-----------|------|-------------|
+    | card | Card | Datos de una tarjeta a usar. |
+    | token | Token | Información de token a usar. |
+    | credit | Credit | Datos del tipo de crédito a emplear. |
+    | otp | string | Información del código de un uso generado. |
+
 servers:
   - url: 'https://test.placetopay.com/'
     description: Modo Pruebas
