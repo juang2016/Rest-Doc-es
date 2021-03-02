@@ -301,6 +301,12 @@ paths:
                     nonce: MzgwYWYwMjc2ZWUzODA5YmI1MDQ1YmNjYzdlNzY1MTY=
                     seed: '2021-03-02T17:03:50+01:00'
                   internalReference: 1449216982
+        description: |
+          **Parámetros**
+
+          Consulta de transacción (queryTransaction)
+          POST /gateway/query
+      description: Permite consultar una transaccion.
   /rest/gateway/information:
     post:
       summary: Solicitud de Información
