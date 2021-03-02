@@ -307,7 +307,28 @@ paths:
       operationId: post-rest-gateway-information
       responses:
         '200':
-          description: OK
+          description: |-
+            **Parámetros**
+
+            | Nombre | Tipo | Descripción |
+            |-----------|------|-------------|
+            | status | Status | Información del estado de la petición. |
+            | provider | string |Determina el proveedor que procesa la transacción (INTERDIN, DATAFAST, BANRED, CREDIBANCO etc) |
+            | cardTypes | string[] | Tipos de tarjeta soportados |
+            | requireOtp | bool | Determina si se necesita un OTP para procesar. |
+            | requireCvv2 | bool | Determina si se requiere obtener el CVV2 del usuario. |
+            | threeDS3DSecure | string | Determina si. | la tarjeta requiere una autenticación previa con el servicio de 3DSecure (unsupported, required, optional) |
+            | credits | Credit[] | Arreglo de tipos de crédito disponibles, arreglo vacío si no es soportado por el proveedor. |
+
+
+            En el ejemplo de la respuesta hay un tipo de crédito “DIF PLUS PAGO TOTAL” y este tiene 3, 6, 9 ,12 en el arreglo de installments, se debe dar la opción al usuario de seleccionar
+
+            DIF PLUS PAGO TOTAL (3) meses
+            DIF PLUS PAGO TOTAL (6) meses
+            DIF PLUS PAGO TOTAL (9) meses
+            DIF PLUS PAGO TOTAL (12) meses
+
+            Y así sucesivamente, este es un ejemplo de como se muestran en el servicio de redirección en un select
           content:
             application/json:
               schema:
@@ -537,6 +558,21 @@ paths:
                     amount:
                       total: 1000
                       currency: COP
+        description: |-
+          Solicitud de Información (informationRequest)
+          POST /gateway/information
+
+          **Parámetros**
+
+          | Nombre | Tipo | Descripción |
+          |-----------|------|-------------|
+          | locale | string | Definido con los códigos ISO 639 (language) y ISO 3166-1 alpha-2 (2-letras del país).
+          ej. en_US, es_EC, es_CO |
+          | auth | Authentication | Información de autenticación del sitio. |
+          | instrument | Instrument | Estructura de entrada para la tarjeta o token. | 
+          | payment | Payment | Información simple del cobro a realizar. |
+      description: |
+        Este servicio proporciona información sobre la tarjeta del usuario que se va a procesar, tal como qué servicios son los que se usarán para ella y los tipos de crédito, si aplica, que hay para esta, si no hay tipos de crédito se retorna un arreglo vacío y si los hay, se debe iterar cada tipo de crédito con los installments que se encuentran en el arreglo.
   /gateway/process/:
     post:
       summary: Cobrar Tokenizacion
