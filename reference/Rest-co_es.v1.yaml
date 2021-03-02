@@ -1805,7 +1805,7 @@ paths:
 
         Cabe aclarar que éste método se provee cómo una ayuda para generar la estructura de autenticación de las solicitudes y no hace parte de los método de integración de webcheckout
 
-        url referencia autenticación: https://placetopay.github.io/web-checkout-api-docs/?shell#autenticacion
+        url referencia autenticación: https://placetopay.github.io/web-checkout-api-docs/?shell#authentication-ecuador
       requestBody:
         content:
           application/json:
