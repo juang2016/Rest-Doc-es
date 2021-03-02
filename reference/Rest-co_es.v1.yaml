@@ -165,6 +165,60 @@ info:
     **InterestValues**
 
     Estructura que contiene la información del cálculo de intereses para un tipo de crédito y monto
+
+    | Name | Type | Description |
+    |-----------|------|-------------|
+    | original | double | Valor original de la transacción. |
+    | installment | double | Valor de la cuota asociada al tipo de crédito. |
+    | interest | double | Valor del interés de la transacción. |
+    | total | double | Valor total que será pagado por el usuario. |
+
+    **AmountConversion**
+
+    Estructura para definir el factor de conversión y los valores.
+
+    | Name | Type | Description |
+    |-----------|------|-------------|
+    | from | AmountBase | Monto solicitado |
+    | to | AmountBase | Monto procesado por la entidad. |
+    | factor | double | Factor de conversión. |
+
+    **AmountBase**
+
+    Estructura que representa una cantidad que define la moneda y el total.
+
+    | Name | Type | Description |
+    |-----------|------|-------------|
+    | currency | string | Moneda acorde al **ISO 4217** (alphabetic code) |
+    | total | decimal | Valor total. |
+
+    **Person**
+
+    Estructura que refleja la información de una persona involucrada en una transacción.
+
+    | Name | Type | Description |
+    |-----------|------|-------------|
+    | documentType | string | Tipo de identificación |
+    | document | string | Identificación. |
+    | name | string | Nombres de la persona |
+    | surname | string | Apellidos de la persona |
+    | company | string | Nombre de la empresa en la que trabaja o representa. |
+    | email | string | Correo electrónico de la persona. |
+    | address | Address | Información completa de la dirección |
+    | mobile | string | Número celular. |
+
+    **Address**
+
+    Estructura que contiene la información sobre una dirección física
+
+
+    | Name | Type | Description |
+    |-----------|------|-------------|
+    |  | string |  |
+    |  | string |  |
+    |  | string |  |
+    |  | string |  |
+    |  | string |  |
 servers:
   - url: 'https://test.placetopay.com/'
     description: Modo Pruebas
