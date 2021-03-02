@@ -26,7 +26,7 @@ info:
     * Si se aprobó la transacción es importante almacenar también el número de autorización, le permitirá realizar reversos posteriormente si fuese necesario.
     * Generalmente las transacciones son culminadas en un tiempo corto (menos de 3 seg), pero si la transacción queda en estado pendiente es importante tener un cron job o similar que esté consultando cada 5 minutos por las transacciones pendientes hasta que se resuelvan.
 
-    ##¿Cuándo es mejor usarlo?##
+    **¿Cuándo es mejor usarlo?**
 
     Este mecanismo sólo debe ser usado por aquellos clientes de la plataforma que requieren capturar la información del tarjetahabiente incluyendo los datos sensibles.
 
@@ -40,7 +40,7 @@ info:
     * Interfaz móvil propietaria, no basada en HTML.
     * Integración con sistemas cuya entrada de los datos sensibles no la realice directamente el tarjetahabiente.
 
-    ##¿Qué obligaciones tengo cuando uso esta integración?##
+    **¿Qué obligaciones tengo cuando uso esta integración?**
 
     Tenga en cuenta que al usar este tipo de integración, usted está suministrando todos los datos del comprador incluyendo los datos sensibles de la tarjeta, este solo hecho requiere que la captura de la información sea por un mecanismo seguro que no ponga en peligro los datos del tarjetahabiente.  Si la información la captura por una página Web, el punto donde se capturan estos datos debe estar sobre protocolo seguro HTTPS usando certificados de seguridad expedidos por una entidad certificadora acreditada.
 
