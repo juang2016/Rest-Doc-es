@@ -1703,5 +1703,53 @@ paths:
           | userAgent | string | UserAgent del usuario que realiza la transacción. |
           | additional | string[] | Arreglo clave valor de datos que se deseen adicionar y que serán almacenados. |
       description: 'Este servicio permite que se realice el cobro a la tarjeta del usuario, los parámetros del instrument son variables, si no se pide tipo de crédito ni otp no es necesario enviar esas variables, payer es siempre requerido, buyer es opcional pero recomendado.'
+  '':
+    post:
+      summary: GetAuthentication
+      operationId: post-p
+      responses:
+        '200':
+          description: OK
+      description: |
+        Estructura que contiene la información de autenticación del sitio generada de acuerdo al WSSE UsernameToken Profile 1.1
+
+        Todas las solicitudes al web deben ser autenticadas con Web Services Security UsernameToken Profile 1.1.
+        https://www.oasis-open.org/committees/download.php/13392/wss-v1.1-spec-pr-UsernameTokenProfile-01.htm
+
+        Usando PasswordDigest
+        **PasswordDigest = Base64 ( SHA-256 ( nonce + seed + tranKey ) )**
+
+        **Solución de problemas**
+
+        Códigos de respuesta para la autenticación fallida y su significado.
+
+        | Codigo | Significado |
+        |-----------|-------------|
+        | 100 | UsernameToken no proporcionado (encabezado de la autorización malformado) |
+        | 101  | Identificador de sitio no existe ( login incorrecto o no se encuentra en el ambiente) |
+        | 102  | El hash de TranKey no coincide (Trankey incorrecto o malformado) |
+        | 103  | Fecha de la semilla mayor de 5 minutos |
+        | 104  | Sitio inactivo |
+        | 105  | Sitio expirado |
+        | 106  | Credenciales expiradas |
+        | 107  | Mala definición del UsernameToken (No cumple con el encabezado WSSE) |
+        | 200  | Saltar el encabezado de autenticación SOAP |
+        | 10001  | Contacte a Soporte |
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+        description: |
+          **Parámetros**
+
+          | Nombre | Tipo | Descripción |
+          |-----------|------|-------------|
+          | login | string | Identificador del sitio a usar. |
+          | tranKey | string | Digest tranKey usando la `explicación provista` |
+          | nonce | string | Valor aleatorio generado por cada petición en BASE64 |
+          | seed | string | Fecha de generación de esta estructura en ISO 8601. |
+    parameters: []
 components:
   schemas: {}
