@@ -214,9 +214,20 @@ info:
 
     | Name | Type | Description |
     |-----------|------|-------------|
-    |  | string |  |
-    |  | string |  |
-    |  | string |  |
+    | street | string | Dirección física completa. |
+    | city | string | Nombre de la ciudad. |
+    | state | string | Nombre del estado coincidente con la dirección |
+    | postalCode | string | Código postal o equivalente se requiere generalmente para los países que tienen. |
+    | country | string | Código internacional del país que se aplica a la dirección física según  ISO 3166-1 ALPHA-2 |
+    | phone | string | Número telefónico. |
+
+    **Transaction**
+
+    Estructura que contiene la información de una transacción
+
+    | Name | Type | Description |
+    |-----------|------|-------------|
+    | status | Status |  |
     |  | string |  |
     |  | string |  |
 servers:
