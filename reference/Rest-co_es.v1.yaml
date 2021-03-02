@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   title: Rest co_es
   version: '1.0'
-  description: |+
+  description: |
     Este servicio web y su arquitectura permite a cualquier aplicación conectarse a Place to Pay para procesar tarjetas, independiente del lenguaje de desarrollo.
 
     Para usar el servicio web, deberás tener un lenguaje de programación que pueda comunicarse con un servicio REST.
@@ -125,6 +125,46 @@ info:
     | credit | Credit | Datos del tipo de crédito a emplear. |
     | otp | string | Información del código de un uso generado. |
 
+    **Card**
+
+    Estructura que contiene la información de la tarjeta
+
+    | Name | Type | Description |
+    |-----------|------|-------------|
+    | number | string | Número completo de la tarjeta. |
+    | expirationMonth | string(2) | Mes de expiración de la tarjeta en formato MM. |
+    | expirationYear | string(2) | Año de expiración de la tarjeta en formato YY. |
+    | cvv | string | Dígitos de verificación de la tarjeta. |
+
+    **Token**
+
+    Estructura que contiene la información del token que asocia a la tarjeta
+
+    | Name | Type | Description |
+    |-----------|------|-------------|
+    | token | string(64) | Token alfanumérico asociado a la tarjeta registrada. |
+    | subtoken | string(16) | Token numérico asociado a la tarjeta. |
+    | franchise | string(10) | Nombre código de la franquicia de la tarjeta (diners, visa, visa_electron, amex, master, discover) |
+    | franchiseName | string(30) | Nombre de la franquicia para mostrar al cliente. |
+    | issuerName | string(60) | Nombre del emisor de la tarjeta, `puede ser nulo en caso de ser un bin desconocido`. |
+    | lastDigits | string(4) | Últimos 4 dígitos de la tarjeta. |
+    | validUntil | string(5) | Fecha de expiración del token, en formato MM/YY |
+
+    **Credit**
+
+    Estructura que contiene la información del tipo de crédito
+
+    | Name | Type | Description |
+    |-----------|------|-------------|
+    | code | string | Código del tipo de crédito. |
+    | type | string | Tipo asociado al crédito. |
+    | groupCode | string | Código del grupo de tipo de crédito. |
+    | installment | int | Número de meses asociado al tipo de crédito. |
+    | installments | int[] | Arreglo con los posibles valores de número de meses que se permiten al tipo de crédito. |
+
+    **InterestValues**
+
+    Estructura que contiene la información del cálculo de intereses para un tipo de crédito y monto
 servers:
   - url: 'https://test.placetopay.com/'
     description: Modo Pruebas
