@@ -35,6 +35,234 @@ paths:
       responses:
         '200':
           description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              properties:
+                auth:
+                  type: object
+                  properties:
+                    login:
+                      type: string
+                      minLength: 1
+                    tranKey:
+                      type: string
+                      minLength: 1
+                    nonce:
+                      type: string
+                      minLength: 1
+                    seed:
+                      type: string
+                      minLength: 1
+                  required:
+                    - login
+                    - tranKey
+                    - nonce
+                    - seed
+                locale:
+                  type: string
+                  minLength: 1
+                payment:
+                  type: object
+                  properties:
+                    reference:
+                      type: string
+                      minLength: 1
+                    description:
+                      type: string
+                      minLength: 1
+                    amount:
+                      type: object
+                      properties:
+                        currency:
+                          type: string
+                          minLength: 1
+                        total:
+                          type: number
+                      required:
+                        - currency
+                        - total
+                  required:
+                    - reference
+                    - description
+                    - amount
+                ipAddress:
+                  type: string
+                  minLength: 1
+                userAgent:
+                  type: string
+                  minLength: 1
+                instrument:
+                  type: object
+                  properties:
+                    token:
+                      type: object
+                      properties:
+                        token:
+                          type: string
+                          minLength: 1
+                        subtoken:
+                          type: string
+                          minLength: 1
+                        franchise:
+                          type: string
+                          minLength: 1
+                        franchiseName:
+                          type: string
+                          minLength: 1
+                        issuerName:
+                          type: string
+                          minLength: 1
+                        lastDigits:
+                          type: string
+                          minLength: 1
+                        validUntil:
+                          type: string
+                          minLength: 1
+                      required:
+                        - token
+                        - subtoken
+                        - franchise
+                        - franchiseName
+                        - issuerName
+                        - lastDigits
+                        - validUntil
+                    credit:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                          minLength: 1
+                        type:
+                          type: string
+                          minLength: 1
+                        groupCode:
+                          type: string
+                          minLength: 1
+                        installment:
+                          type: string
+                          minLength: 1
+                      required:
+                        - code
+                        - type
+                        - groupCode
+                        - installment
+                  required:
+                    - token
+                    - credit
+                payer:
+                  type: object
+                  properties:
+                    document:
+                      type: string
+                      minLength: 1
+                    documentType:
+                      type: string
+                      minLength: 1
+                    name:
+                      type: string
+                      minLength: 1
+                    surname:
+                      type: string
+                      minLength: 1
+                    email:
+                      type: string
+                      minLength: 1
+                    mobile:
+                      type: string
+                      minLength: 1
+                  required:
+                    - document
+                    - documentType
+                    - name
+                    - surname
+                    - email
+                    - mobile
+                buyer:
+                  type: object
+                  properties:
+                    document:
+                      type: string
+                      minLength: 1
+                    documentType:
+                      type: string
+                      minLength: 1
+                    name:
+                      type: string
+                      minLength: 1
+                    surname:
+                      type: string
+                      minLength: 1
+                    email:
+                      type: string
+                      minLength: 1
+                    mobile:
+                      type: string
+                      minLength: 1
+                  required:
+                    - document
+                    - documentType
+                    - name
+                    - surname
+                    - email
+                    - mobile
+              required:
+                - auth
+                - locale
+                - payment
+                - ipAddress
+                - userAgent
+                - instrument
+                - payer
+                - buyer
+            examples:
+              Ejemplo:
+                value:
+                  auth:
+                    login: 6dd490faf9cb87a9862245da41170ff2
+                    tranKey: Lz3OSXV58JePuY0b/bXmxzg2Ee4/8jSCU9s7Kqwm9SQ=
+                    nonce: NGUwNWVmMzAxZDhhZjY0N2M4YTdmYmUwNjU1NTA1NzQ=
+                    seed: '2021-03-02T17:46:46+01:00'
+                  locale: es_CO
+                  payment:
+                    reference: TEST_20171108_144400
+                    description: Prueba rest colombia.
+                    amount:
+                      currency: COP
+                      total: 1000
+                  ipAddress: 127.0.0.1
+                  userAgent: Mozilla/5.0 USER_AGENT HERE
+                  instrument:
+                    token:
+                      token: bd8663e5f5635ff6e84e39171978de3aac5fb4cdf16b9c78ba1f8d9d049c86d2
+                      subtoken: '9684994211631111'
+                      franchise: visa
+                      franchiseName: Visa
+                      issuerName: 'JPMORGAN CHASE BANK, N.A.'
+                      lastDigits: '1111'
+                      validUntil: '2022-02-28'
+                    credit:
+                      code: '0'
+                      type: '00'
+                      groupCode: C
+                      installment: '1'
+                  payer:
+                    document: '8467451900'
+                    documentType: CC
+                    name: Miss Delia Schamberger Sr.
+                    surname: Wisozk
+                    email: tesst@gmail.com
+                    mobile: '3006108300'
+                  buyer:
+                    document: '8467451900'
+                    documentType: CC
+                    name: Miss Delia Schamberger Sr.
+                    surname: Wisozk
+                    email: tesst@gmail.com
+                    mobile: '3006108300'
   /gateway/process:
     post:
       summary: Procesamiento de transacción
