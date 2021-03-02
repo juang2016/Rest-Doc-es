@@ -1054,7 +1054,27 @@ paths:
       operationId: post-gateway-process
       responses:
         '200':
-          description: OK
+          description: |-
+            **Parámetros**
+
+            | Nombre | Tipo | Descripción |
+            |-----------|------|-------------|
+            | status | Status | Información del estado de la petición. |
+            | provider | string | Determina el proveedor que procesa la transacción (INTERDIN, DATAFAST, BANRED) |
+            | internalReference | bigint | Código único que identifica la transacción en los sistemas de PlacetoPay. |
+            | reference | string | Referencia provista por el comercio. |
+            | paymentMethod | string(5) | Código que identifica el medio de pago usado. |
+            | franchise | string | Código de franquicia usado en la transacción (diners, visa, master, discover, amex). |
+            | franchiseName | string | Nombre de la franquicia usada. |
+            | issuerName | string | Nombre del banco emisor de la tarjeta usada de acuerdo a nuestro listado de bines. |
+            | amount | Amount | Valores asociados a la transacción. |
+            | conversion | AmountConversion | Valores de conversión usados para la transacción, siempre presente aunque no se realice cambio de moneda. |
+            | authorization | string | Código de autorización generado por el proveedor. |
+            | receipt | string | Código de recibido de la petición de transacción. |
+            | type | string | Identifica el funcionamiento de la transacción AUTH_ONLY = Captura normal CAPTURE_ONLY = La transacción debe ser aprobada desde la consola. |
+            | refunded | bool | Determina si se ha realizado un reverso sobre esta transacción. |
+            | lastDigits | string | Últimos 4 dígitos de la tarjeta empleada. |
+            | additional | array | Datos adicionales empleados en la transacción. |
           content:
             application/json:
               schema:
