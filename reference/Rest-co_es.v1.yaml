@@ -270,6 +270,213 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        minLength: 1
+                      reason:
+                        type: string
+                        minLength: 1
+                      message:
+                        type: string
+                        minLength: 1
+                      date:
+                        type: string
+                        minLength: 1
+                    required:
+                      - status
+                      - reason
+                      - message
+                      - date
+                  date:
+                    type: string
+                    minLength: 1
+                  transactionDate:
+                    type: string
+                    minLength: 1
+                  internalReference:
+                    type: number
+                  reference:
+                    type: string
+                    minLength: 1
+                  paymentMethod:
+                    type: string
+                    minLength: 1
+                  franchise:
+                    type: string
+                    minLength: 1
+                  franchiseName:
+                    type: string
+                    minLength: 1
+                  issuerName:
+                    type: string
+                    minLength: 1
+                  amount:
+                    type: object
+                    properties:
+                      currency:
+                        type: string
+                        minLength: 1
+                      total:
+                        type: number
+                    required:
+                      - currency
+                      - total
+                  conversion:
+                    type: object
+                    properties:
+                      from:
+                        type: object
+                        properties:
+                          currency:
+                            type: string
+                            minLength: 1
+                          total:
+                            type: number
+                        required:
+                          - currency
+                          - total
+                      to:
+                        type: object
+                        properties:
+                          currency:
+                            type: string
+                            minLength: 1
+                          total:
+                            type: number
+                        required:
+                          - currency
+                          - total
+                      factor:
+                        type: number
+                    required:
+                      - from
+                      - to
+                      - factor
+                  authorization:
+                    type: string
+                    minLength: 1
+                  receipt:
+                    type: number
+                  type:
+                    type: string
+                    minLength: 1
+                  refunded:
+                    type: boolean
+                  lastDigits:
+                    type: string
+                    minLength: 1
+                  provider:
+                    type: string
+                    minLength: 1
+                  discount: {}
+                  processorFields:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        minLength: 1
+                      b24:
+                        type: string
+                        minLength: 1
+                    required:
+                      - id
+                      - b24
+                  additional:
+                    type: object
+                    properties:
+                      merchantCode:
+                        type: string
+                        minLength: 1
+                      terminalNumber:
+                        type: string
+                        minLength: 1
+                      bin:
+                        type: string
+                        minLength: 1
+                      expiration:
+                        type: string
+                        minLength: 1
+                      installments:
+                        type: string
+                        minLength: 1
+                    required:
+                      - merchantCode
+                      - terminalNumber
+                      - bin
+                      - expiration
+                      - installments
+                required:
+                  - status
+                  - date
+                  - transactionDate
+                  - internalReference
+                  - reference
+                  - paymentMethod
+                  - franchise
+                  - franchiseName
+                  - issuerName
+                  - amount
+                  - conversion
+                  - authorization
+                  - receipt
+                  - type
+                  - refunded
+                  - lastDigits
+                  - provider
+                  - processorFields
+                  - additional
+              examples:
+                Ejemplo:
+                  value:
+                    status:
+                      status: APPROVED
+                      reason: '00'
+                      message: Aprobada
+                      date: '2021-03-02T11:47:04-05:00'
+                    date: '2021-03-02T11:47:04-05:00'
+                    transactionDate: '2021-03-02T11:47:04-05:00'
+                    internalReference: 1505728229
+                    reference: TEST_20171108_144400
+                    paymentMethod: CR_VS
+                    franchise: visa
+                    franchiseName: Visa
+                    issuerName: 'JPMORGAN CHASE BANK, N.A.'
+                    amount:
+                      currency: COP
+                      total: 1000
+                    conversion:
+                      from:
+                        currency: COP
+                        total: 1000
+                      to:
+                        currency: COP
+                        total: 1000
+                      factor: 1
+                    authorization: '999999'
+                    receipt: 1020330770
+                    type: AUTH_ONLY
+                    refunded: false
+                    lastDigits: '****1111'
+                    provider: CREDIBANCO
+                    discount: null
+                    processorFields:
+                      id: c3e5a278db727933e12796139cdbf506
+                      b24: '000'
+                    additional:
+                      merchantCode: '011271442'
+                      terminalNumber: '00057742'
+                      bin: '411111'
+                      expiration: '0222'
+                      installments: '1'
       requestBody:
         content:
           application/json:
