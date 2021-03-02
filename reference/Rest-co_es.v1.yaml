@@ -610,7 +610,27 @@ paths:
       operationId: post-gateway-process
       responses:
         '200':
-          description: OK
+          description: |-
+            **Parámetros**
+
+            | Nombre | Tipo | Descripción |
+            |-----------|------|-------------|
+            | status | Status | Información del estado de la petición. |
+            | provider | string | Determina el proveedor que procesa la transacción (INTERDIN, DATAFAST, BANRED) |
+            | internalReference | bigint | Código único que identifica la transacción en los sistemas de PlacetoPay. |
+            | reference | string | Referencia provista por el comercio. |
+            | paymentMethod | string(5) | Código que identifica el medio de pago usado. |
+            | franchise | string | Código de franquicia usado en la transacción (diners, visa, master, discover, amex). |
+            | franchiseName | string | Nombre de la franquicia usada. |
+            | issuerName | string | Nombre del banco emisor de la tarjeta usada de acuerdo a nuestro listado de bines. |
+            | amount | Amount | Valores asociados a la transacción. |
+            | conversion | AmountConversion | Valores de conversión usados para la transacción, siempre presente aunque no se realice cambio de moneda. |
+            | authorization | string | Código de autorización generado por el proveedor. |
+            | receipt | string | Código de recibido de la petición de transacción. |
+            | type | string | Identifica el funcionamiento de la transacción AUTH_ONLY = Captura normal CAPTURE_ONLY = La transacción debe ser aprobada desde la consola. |
+            | refunded | bool | Determina si se ha realizado un reverso sobre esta transacción. |
+            | lastDigits | string | Últimos 4 dígitos de la tarjeta empleada. |
+            | additional | array | Datos adicionales empleados en la transacción. |
           content:
             application/json:
               schema:
@@ -1046,7 +1066,20 @@ paths:
                     surname: Wisozk
                     email: tesst@gmail.com
                     mobile: '3006108300'
-        description: ''
+        description: |-
+          **Parámetros**
+
+          | Nombre | Tipo | Descripción |
+          |-----------|------|-------------|
+          | auth | Authentication | Información de autenticación del sitio. |
+          | locale | string | Definido con los códigos ISO 639 (language) y ISO 3166-1 alpha-2 (2-letras del país) ej. en_US, es_EC, es_CO |
+          | payment | Payment | Información completa del cobro a realizar. |
+          | instrument | Instrument | Estructura de entrada para la tarjeta o token. |
+          | payer | Person | Información del pagador. |
+          | buyer | Person | Información del comprador. |
+          | ipAddress | string | IP del usuario que realiza la transacción. |
+          | userAgent | string | UserAgent del usuario que realiza la transacción. |
+          | additional | string[] | Arreglo clave valor de datos que se deseen adicionar y que serán almacenados. |
       description: 'Este servicio permite que se realice el cobro a la tarjeta del usuario ya tokenizada, los parámetros del instrument son variables, si no se pide tipo de crédito ni otp no es necesario enviar esas variables, payer es siempre requerido, buyer es opcional pero recomendado.'
   /gateway/process:
     post:
