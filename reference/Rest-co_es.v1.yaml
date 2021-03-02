@@ -15,11 +15,240 @@ paths:
           description: OK
   /rest/gateway/information:
     post:
-      summary: ''
+      summary: Solicitud de Información
       operationId: post-rest-gateway-information
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        minLength: 1
+                      reason:
+                        type: string
+                        minLength: 1
+                      message:
+                        type: string
+                        minLength: 1
+                      date:
+                        type: string
+                        minLength: 1
+                    required:
+                      - status
+                      - reason
+                      - message
+                      - date
+                  provider:
+                    type: string
+                    minLength: 1
+                  serviceCode:
+                    type: string
+                    minLength: 1
+                  cardType:
+                    type: string
+                    minLength: 1
+                  cardTypes:
+                    type: array
+                    items:
+                      required: []
+                      properties: {}
+                  displayInterest:
+                    type: boolean
+                  requireOtp:
+                    type: boolean
+                  requireCvv2:
+                    type: boolean
+                  threeDS:
+                    type: string
+                    minLength: 1
+                  credits:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      required:
+                        - description
+                        - code
+                        - groupCode
+                        - type
+                      properties:
+                        description:
+                          type: string
+                          minLength: 1
+                        code:
+                          type: string
+                          minLength: 1
+                        groupCode:
+                          type: string
+                          minLength: 1
+                        type:
+                          type: string
+                          minLength: 1
+                        installments:
+                          type: array
+                          items:
+                            required: []
+                            properties: {}
+                required:
+                  - status
+                  - provider
+                  - serviceCode
+                  - cardType
+                  - cardTypes
+                  - displayInterest
+                  - requireOtp
+                  - requireCvv2
+                  - threeDS
+                  - credits
+              examples:
+                Ejemplo:
+                  value:
+                    status:
+                      status: OK
+                      reason: '00'
+                      message: La petición se ha procesado correctamente
+                      date: '2021-03-02T11:04:16-05:00'
+                    provider: CREDIBANCO
+                    serviceCode: CR_VS
+                    cardType: C
+                    cardTypes:
+                      - C
+                      - R
+                      - A
+                    displayInterest: false
+                    requireOtp: false
+                    requireCvv2: true
+                    threeDS: unsupported
+                    credits:
+                      - description: Cuotas
+                        code: '0'
+                        groupCode: C
+                        type: '00'
+                        installments:
+                          - 1
+                          - 2
+                          - 3
+                          - 4
+                          - 5
+                          - 6
+                          - 7
+                          - 8
+                          - 9
+                          - 10
+                          - 11
+                          - 12
+                          - 13
+                          - 14
+                          - 15
+                          - 16
+                          - 17
+                          - 18
+                          - 19
+                          - 20
+                          - 21
+                          - 22
+                          - 23
+                          - 24
+                          - 25
+                          - 26
+                          - 27
+                          - 28
+                          - 29
+                          - 30
+                          - 31
+                          - 32
+                          - 33
+                          - 34
+                          - 35
+                          - 36
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              properties:
+                auth:
+                  type: object
+                  properties:
+                    login:
+                      type: string
+                      minLength: 1
+                    tranKey:
+                      type: string
+                      minLength: 1
+                    nonce:
+                      type: string
+                      minLength: 1
+                    seed:
+                      type: string
+                      minLength: 1
+                  required:
+                    - login
+                    - tranKey
+                    - nonce
+                    - seed
+                instrument:
+                  type: object
+                  properties:
+                    card:
+                      type: object
+                      properties:
+                        number:
+                          type: string
+                          minLength: 1
+                      required:
+                        - number
+                  required:
+                    - card
+                payment:
+                  type: object
+                  properties:
+                    reference:
+                      type: string
+                      minLength: 1
+                    amount:
+                      type: object
+                      properties:
+                        total:
+                          type: number
+                        currency:
+                          type: string
+                          minLength: 1
+                      required:
+                        - total
+                        - currency
+                  required:
+                    - reference
+                    - amount
+              required:
+                - auth
+                - instrument
+                - payment
+            examples:
+              Ejemplo:
+                value:
+                  auth:
+                    login: 6dd490faf9cb87a9862245da41170ff2
+                    tranKey: JUfKi8+W//kX43WZd8FcnNsdl7zkaeAQdmSOudWcVi0=
+                    nonce: MzgwYWYwMjc2ZWUzODA5YmI1MDQ1YmNjYzdlNzY1MTY=
+                    seed: '2021-03-02T17:03:50+01:00'
+                  instrument:
+                    card:
+                      number: '4111111111111111'
+                  payment:
+                    reference: testing_12
+                    amount:
+                      total: 1000
+                      currency: COP
   /rest/gateway/process:
     post:
       summary: ''
