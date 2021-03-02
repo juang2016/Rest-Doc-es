@@ -566,8 +566,7 @@ paths:
 
           | Nombre | Tipo | Descripción |
           |-----------|------|-------------|
-          | locale | string | Definido con los códigos ISO 639 (language) y ISO 3166-1 alpha-2 (2-letras del país)
-          ej. en_US, es_EC, es_CO |
+          | locale | string | Definido con los códigos ISO 639 (language) y ISO 3166-1 alpha-2 (2-letras del país) ej. en_US, es_EC, es_CO |
           | auth | Authentication | Información de autenticación del sitio. |
           | instrument | Instrument | Estructura de entrada para la tarjeta o token. | 
           | payment | Payment | Información simple del cobro a realizar. |
