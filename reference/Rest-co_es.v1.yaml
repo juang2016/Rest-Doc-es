@@ -42,5 +42,95 @@ paths:
       responses:
         '200':
           description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                auth:
+                  type: object
+                  properties:
+                    login:
+                      type: string
+                    tranKey:
+                      type: string
+                    nonce:
+                      type: string
+                    seed:
+                      type: string
+                locale:
+                  type: string
+                payment:
+                  type: object
+                  properties:
+                    reference:
+                      type: string
+                    description:
+                      type: string
+                    amount:
+                      type: object
+                      properties:
+                        currency:
+                          type: string
+                        total:
+                          type: number
+                ipAddress:
+                  type: string
+                userAgent:
+                  type: string
+                instrument:
+                  type: object
+                  properties:
+                    card:
+                      type: object
+                      properties:
+                        number:
+                          type: number
+                        expirationMonth:
+                          type: number
+                        expirationYear:
+                          type: number
+                        cvv:
+                          type: number
+                    credit:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                        type:
+                          type: number
+                        groupCode:
+                          type: string
+                        installment:
+                          type: number
+                payer:
+                  type: object
+                  properties:
+                    document:
+                      type: number
+                    documentType:
+                      type: string
+                    name:
+                      type: string
+                    surname:
+                      type: string
+                    email:
+                      type: string
+                    mobile:
+                      type: string
+                buyer:
+                  type: object
+                  properties:
+                    document:
+                      type: number
+                    documentType:
+                      type: string
+                    name:
+                      type: string
+                    email:
+                      type: string
+                    '':
+                      type: string
 components:
   schemas: {}
