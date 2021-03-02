@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   title: Rest co_es
   version: '1.0'
-  description: |
+  description: |-
     Este servicio web y su arquitectura permite a cualquier aplicación conectarse a Place to Pay para procesar tarjetas, independiente del lenguaje de desarrollo.
 
     Para usar el servicio web, deberás tener un lenguaje de programación que pueda comunicarse con un servicio REST.
@@ -78,6 +78,9 @@ info:
 
     | Name | Type | Description |
     |-----------|------|-------------|
+    | reference | string(32) | Referencia para la solicitud de pago para vincular con el comercio. |
+    | description | string | Descripción de la cuenta. |
+    | amount | Amount | Detalle del monto a cobrar en la transacción. |
 servers:
   - url: 'https://test.placetopay.com/'
     description: Modo Pruebas
