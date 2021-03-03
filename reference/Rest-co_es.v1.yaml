@@ -263,7 +263,9 @@ info:
     | CREDENCIAL | 5406251000000008 | Aprueba |
 servers:
   - url: 'https://test.placetopay.com/'
-    description: Modo Pruebas
+    description: Modo Pruebas Colombia
+  - url: 'https://test.placetopay.ec/'
+    description: Modo Pruebas Ecuador
 paths:
   /rest/gateway/query:
     post:
