@@ -1965,7 +1965,98 @@ paths:
       responses:
         '200':
           description: OK
-      description: ''
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        minLength: 1
+                      message:
+                        type: string
+                        minLength: 1
+                      reason:
+                        type: string
+                        minLength: 1
+                      date:
+                        type: string
+                        minLength: 1
+                    required:
+                      - status
+                      - message
+                      - reason
+                      - date
+                  provider:
+                    type: string
+                    minLength: 1
+                  instrument:
+                    type: object
+                    properties:
+                      token:
+                        type: object
+                        properties:
+                          token:
+                            type: string
+                            minLength: 1
+                          subtoken:
+                            type: string
+                            minLength: 1
+                          franchise:
+                            type: string
+                            minLength: 1
+                          franchiseName:
+                            type: string
+                            minLength: 1
+                          issuerName:
+                            type: string
+                            minLength: 1
+                          lastDigits:
+                            type: string
+                            minLength: 1
+                          validUntil:
+                            type: string
+                            minLength: 1
+                        required:
+                          - token
+                          - subtoken
+                          - franchise
+                          - franchiseName
+                          - issuerName
+                          - lastDigits
+                          - validUntil
+                    required:
+                      - token
+                required:
+                  - status
+                  - provider
+                  - instrument
+              examples:
+                Ejemplo:
+                  value:
+                    status:
+                      status: OK
+                      message: Token generado exitosamente
+                      reason: '00'
+                      date: '2018-03-06T20:47:01-05:00'
+                    provider: INTERDIN
+                    instrument:
+                      token:
+                        token: 81135c6e8115b27e6a8afa4bce7d619503e87603d1fc4d139abea11b7c5e17ae
+                        subtoken: '1493989062790008'
+                        franchise: diners
+                        franchiseName: Diners
+                        issuerName: Diners Club
+                        lastDigits: '0008'
+                        validUntil: 12/21
+      description: |
+        Este servicio permite almacenar tarjetas de crédito de manera segura, a través de una petición que contenga la información de la misma, se generará un token que puede ser usado en el servicio de procesamiento y para todos los efectos, en PlacetoPay equivale a una tarjeta de crédito, la diferencia es que se envía la estructura token en vez de card.
+
+        Previamente al consumo de este servicio se debe consultar el de información para saber si es necesario o no generar un OTP al cliente y en caso de ser necesario, solicitar el token a la persona y enviarlo en el consumo.
       tags:
         - Tokenizar una tarjeta
       requestBody:
