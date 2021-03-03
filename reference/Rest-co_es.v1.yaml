@@ -1059,7 +1059,7 @@ paths:
                   - processorFields
                   - additional
               examples:
-                Ejemplo para Colombia:
+                Ejemplo:
                   value:
                     status:
                       status: APPROVED
