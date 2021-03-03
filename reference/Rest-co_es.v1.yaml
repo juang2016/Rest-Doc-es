@@ -1958,5 +1958,115 @@ paths:
       tags:
         - Autenticacion
     parameters: []
+  /gateway/tokenize:
+    post:
+      summary: Tokenización (tokenize)
+      operationId: post-gateway-tokenize
+      responses:
+        '200':
+          description: OK
+      description: ''
+      tags:
+        - Tokenizar una tarjeta
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: ''
+              type: object
+              properties:
+                auth:
+                  type: object
+                  properties:
+                    login:
+                      type: string
+                      minLength: 1
+                    tranKey:
+                      type: string
+                      minLength: 1
+                    nonce:
+                      type: string
+                      minLength: 1
+                    seed:
+                      type: string
+                      minLength: 1
+                  required:
+                    - login
+                    - tranKey
+                    - nonce
+                    - seed
+                payer:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      minLength: 1
+                    surname:
+                      type: string
+                      minLength: 1
+                    email:
+                      type: string
+                      minLength: 1
+                  required:
+                    - name
+                    - surname
+                    - email
+                instrument:
+                  type: object
+                  properties:
+                    card:
+                      type: object
+                      properties:
+                        number:
+                          type: string
+                          minLength: 1
+                        expirationMonth:
+                          type: string
+                          minLength: 1
+                        expirationYear:
+                          type: string
+                          minLength: 1
+                        cvv:
+                          type: string
+                          minLength: 1
+                      required:
+                        - number
+                        - expirationMonth
+                        - expirationYear
+                        - cvv
+                  required:
+                    - card
+                ipAddress:
+                  type: string
+                  minLength: 1
+                userAgent:
+                  type: string
+                  minLength: 1
+              required:
+                - auth
+                - payer
+                - instrument
+                - ipAddress
+                - userAgent
+            examples:
+              Ejemplo:
+                value:
+                  auth:
+                    login: 6dd490faf9cb87a9862245da41170ff2
+                    tranKey: oE2tkiv7RFJ/IrnMmtGG8mAynZarF/nPSj5WHs9j9Qw=
+                    nonce: ZDBhMmU1OWY5OTRlMGJmNjE4MzZmYWUzYmRjNjQyZjY=
+                    seed: '2021-03-02T17:28:02+01:00'
+                  payer:
+                    name: Dr. Wilfredo Cole Sr.
+                    surname: Corwin
+                    email: jewell32@abbott.com
+                  instrument:
+                    card:
+                      number: '4111111111111111'
+                      expirationMonth: '02'
+                      expirationYear: '22'
+                      cvv: '123'
+                  ipAddress: 127.0.0.1
+                  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
 components:
   schemas: {}
