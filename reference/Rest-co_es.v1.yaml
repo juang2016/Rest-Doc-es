@@ -1964,7 +1964,14 @@ paths:
       operationId: post-gateway-tokenize
       responses:
         '200':
-          description: OK
+          description: |-
+            **Parámetros**
+
+            | Nombre | Tipo | Descripción |
+            |-----------|------|-------------|
+            | status | Status | Información del estado de la petición. |
+            | provider | string | Determina el proveedor que procesa la transacción (INTERDIN, DATAFAST, BANRED ETC.) |
+            | instrument | Instrument | Estructura de salida para el token. |
           content:
             application/json:
               schema:
@@ -2179,6 +2186,17 @@ paths:
                     otp: '123456'
                   ipAddress: 127.0.0.1
                   userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
+        description: |
+          **Parámetros**
+
+          | Nombre | Tipo | Descripción |
+          |-----------|------|-------------|
+          | locale | string | Definido con los códigos ISO 639 (language) y ISO 3166-1 alpha-2 (2-letras del país) ej. en_US, es_EC, es_CO |
+          | auth | Authentication | Información de autenticación del sitio. |
+          | payer | Person | Información del propietario de la tarjeta. |
+          | instrument | Instrument | Estructura de entrada para la tarjeta o token. |
+          | ipAddress | string | IP del usuario que realiza la transacción. |
+          | userAgent | string | UserAgent del usuario que realiza la transacción. |
   /gateway/transaction:
     post:
       summary: Reverso de transacción
