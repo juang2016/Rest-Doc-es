@@ -3138,8 +3138,43 @@ paths:
           content:
             application/json:
               schema:
+                description: ''
                 type: object
-                properties: {}
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        minLength: 1
+                      reason:
+                        type: number
+                      message:
+                        type: string
+                        minLength: 1
+                      date:
+                        type: string
+                        minLength: 1
+                    required:
+                      - status
+                      - reason
+                      - message
+                      - date
+                  provider:
+                    type: string
+                    minLength: 1
+                required:
+                  - status
+                  - provider
+              examples:
+                Ejemplo:
+                  value:
+                    status:
+                      status: OK
+                      reason: 0
+                      message: La petición se ha procesado correctamente
+                      date: '2018-02-05T21:20:37-05:00'
+                    provider: INTERDIN
       description: |
         Este servicio se consume si es necesario el otp para la tarjeta provista por el cliente (requireOtp
         en true) y debe permitirsele al usuario ingresar el OTP para enviarlo posteriormente en el
@@ -3149,8 +3184,69 @@ paths:
         content:
           application/json:
             schema:
+              description: ''
               type: object
-              properties: {}
+              properties:
+                auth:
+                  type: object
+                  properties:
+                    login:
+                      type: string
+                      minLength: 1
+                    tranKey:
+                      type: string
+                      minLength: 1
+                    nonce:
+                      type: string
+                      minLength: 1
+                    seed:
+                      type: string
+                      minLength: 1
+                  required:
+                    - login
+                    - tranKey
+                    - nonce
+                    - seed
+                instrument:
+                  type: object
+                  properties:
+                    card:
+                      type: object
+                      properties:
+                        number:
+                          type: string
+                          minLength: 1
+                      required:
+                        - number
+                  required:
+                    - card
+                payment:
+                  type: object
+                  properties:
+                    reference:
+                      type: string
+                      minLength: 1
+                    amount:
+                      type: object
+                      properties:
+                        total:
+                          type: number
+                        currency:
+                          type: string
+                          minLength: 1
+                      required:
+                        - total
+                        - currency
+                  required:
+                    - reference
+                    - amount
+              required:
+                - auth
+                - instrument
+                - payment
+            examples:
+              Ejemplo:
+                value: {}
         description: |-
           **Parámetros**
 
