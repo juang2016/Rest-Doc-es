@@ -2179,5 +2179,15 @@ paths:
                     otp: '123456'
                   ipAddress: 127.0.0.1
                   userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
+  /gateway/transaction:
+    post:
+      summary: Reverso de transacción
+      operationId: post-gateway-transaction
+      responses:
+        '200':
+          description: OK
+      description: ''
+      tags:
+        - Reversar una transaccion
 components:
   schemas: {}
