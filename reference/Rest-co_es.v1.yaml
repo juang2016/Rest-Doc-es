@@ -3054,5 +3054,7 @@ paths:
           | auth | Authentication | Información de autenticación del sitio. |
           | instrument | Instrument | Estructura de entrada para la tarjeta o token. |
           | payment | Payment | Información simple del cobro a realizar. |
+      tags:
+        - Solo Ecuador
 components:
   schemas: {}
