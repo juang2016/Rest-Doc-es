@@ -2937,5 +2937,14 @@ paths:
                     total: 1000
         description: ''
     parameters: []
+  /rest/gateway/interests:
+    post:
+      summary: Cálculo de Intereses
+      operationId: post-rest-gateway-interests
+      responses:
+        '200':
+          description: OK
+      tags:
+        - Solo Ecuador
 components:
   schemas: {}
