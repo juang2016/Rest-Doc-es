@@ -2224,6 +2224,209 @@ paths:
             | refunded | bool | Determina si se ha realizado un reverso sobre esta transacción. |
             | lastDigits | string | Últimos 4 dígitos de la tarjeta empleada. |
             | additional | array | Datos adicionales empleados en la transacción. |
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        minLength: 1
+                      reason:
+                        type: string
+                        minLength: 1
+                      message:
+                        type: string
+                        minLength: 1
+                      date:
+                        type: string
+                        minLength: 1
+                    required:
+                      - status
+                      - reason
+                      - message
+                      - date
+                  internalReference:
+                    type: number
+                  reference:
+                    type: string
+                    minLength: 1
+                  paymentMethod:
+                    type: string
+                    minLength: 1
+                  franchise:
+                    type: string
+                    minLength: 1
+                  franchiseName:
+                    type: string
+                    minLength: 1
+                  issuerName:
+                    type: string
+                    minLength: 1
+                  amount:
+                    type: object
+                    properties:
+                      taxes:
+                        type: array
+                        uniqueItems: true
+                        minItems: 1
+                        items:
+                          required:
+                            - kind
+                            - amount
+                            - base
+                          properties:
+                            kind:
+                              type: string
+                              minLength: 1
+                            amount:
+                              type: number
+                            base:
+                              type: number
+                      details:
+                        type: array
+                        uniqueItems: true
+                        minItems: 1
+                        items:
+                          required:
+                            - kind
+                            - amount
+                          properties:
+                            kind:
+                              type: string
+                              minLength: 1
+                            amount:
+                              type: string
+                              minLength: 1
+                      currency:
+                        type: string
+                        minLength: 1
+                      total:
+                        type: string
+                        minLength: 1
+                    required:
+                      - taxes
+                      - details
+                      - currency
+                      - total
+                  conversion:
+                    type: object
+                    properties:
+                      from:
+                        type: object
+                        properties:
+                          currency:
+                            type: string
+                            minLength: 1
+                          total:
+                            type: string
+                            minLength: 1
+                        required:
+                          - currency
+                          - total
+                      to:
+                        type: object
+                        properties:
+                          currency:
+                            type: string
+                            minLength: 1
+                          total:
+                            type: string
+                            minLength: 1
+                        required:
+                          - currency
+                          - total
+                      factor:
+                        type: number
+                    required:
+                      - from
+                      - to
+                      - factor
+                  authorization: {}
+                  receipt:
+                    type: number
+                  type:
+                    type: string
+                    minLength: 1
+                  refunded:
+                    type: boolean
+                  lastDigits:
+                    type: string
+                    minLength: 1
+                  provider:
+                    type: string
+                    minLength: 1
+                  discount: {}
+                  processorFields:
+                    type: array
+                    items:
+                      required: []
+                      properties: {}
+                required:
+                  - status
+                  - internalReference
+                  - reference
+                  - paymentMethod
+                  - franchise
+                  - franchiseName
+                  - issuerName
+                  - amount
+                  - conversion
+                  - receipt
+                  - type
+                  - refunded
+                  - lastDigits
+                  - provider
+                  - processorFields
+              examples:
+                Ejemplo:
+                  value:
+                    status:
+                      status: APPROVED
+                      reason: '00'
+                      message: Aprobada
+                      date: '2018-02-05T21:32:41-05:00'
+                    internalReference: 1449217015
+                    reference: TEST_20171108_144400
+                    paymentMethod: ID_DN
+                    franchise: diners
+                    franchiseName: Diners
+                    issuerName: Diners Club
+                    amount:
+                      taxes:
+                        - kind: valueAddedTax
+                          amount: 0
+                          base: 0
+                        - kind: ice
+                          amount: 0
+                          base: 0
+                      details:
+                        - kind: shipping
+                          amount: '0.00'
+                        - kind: tip
+                          amount: '0.00'
+                      currency: COP
+                      total: '159939.56'
+                    conversion:
+                      from:
+                        currency: COP
+                        total: '159939.56'
+                      to:
+                        currency: USD
+                        total: '56.43'
+                      factor: 0.00035282077804890796
+                    authorization: null
+                    receipt: 1449217015
+                    type: CREDIT
+                    refunded: false
+                    lastDigits: '0008'
+                    provider: INTERDIN
+                    discount: null
+                    processorFields: []
       description: ''
       tags:
         - Reversar una transaccion
