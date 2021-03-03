@@ -2943,8 +2943,40 @@ paths:
       operationId: post-rest-gateway-interests
       responses:
         '200':
-          description: OK
+          description: |-
+            **Parámetros**
+
+            | Nombre | Tipo | Descripción |
+            |-----------|------|-------------|
+            | status | Status | Información del estado de la petición. |
+            | provider | string | Determina el proveedor que procesa la transacción (INTERDIN, DATAFAST, BANRED) |
+            | values  | InterestValues | Valores para el monto y el tipo de crédito enviado. |
+            | conversion  | AmountConversion | Si se realiza una conversión de moneda se proporciona la información de dicha conversion, null si no se realizó. |
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
       tags:
         - Solo Ecuador
+      description: |
+        Este servicio se debe consumir si la tarjeta requiere que se muestren los intereses
+        (displayInterest en true) y como ejemplo de esta manera se muestran los valores en el servicio
+        de redirección.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+        description: |
+          **Parámetros**
+
+          | Nombre | Tipo | Descripción |
+          |-----------|------|-------------|
+          | locale | string | Definido con los códigos ISO 639 (language) y ISO 3166-1 alpha-2 (2-letras del país) ej. en_US, es_EC, es_CO |
+          | auth | Authentication | Información de autenticación del sitio. |
+          | instrument | Instrument | Estructura de entrada para la tarjeta o token. |
+          | payment | Payment | Información simple del cobro a realizar. |
 components:
   schemas: {}
