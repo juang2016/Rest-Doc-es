@@ -3273,6 +3273,55 @@ paths:
             | signature | string | Firma asignada a la comprobación de OTP dela transacción, necesaria para los filtros de
             seguridad, vacío en caso de no proporcionar el OTP correcto. |
             | validated | bool  | Determina si el OTP ha sido verificado. |
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        minLength: 1
+                      reason:
+                        type: number
+                      message:
+                        type: string
+                        minLength: 1
+                      date:
+                        type: string
+                        minLength: 1
+                    required:
+                      - status
+                      - reason
+                      - message
+                      - date
+                  provider:
+                    type: string
+                    minLength: 1
+                  signature:
+                    type: string
+                    minLength: 1
+                  validated:
+                    type: boolean
+                required:
+                  - status
+                  - provider
+                  - signature
+                  - validated
+              examples:
+                Ejemplo:
+                  value:
+                    status:
+                      status: OK
+                      reason: 0
+                      message: OTP Validation successful
+                      date: '2018-07-19T08:59:57-05:00'
+                    provider: INTERDIN
+                    signature: a8ecc59c2510a8ae27e1724ebf4647b5
+                    validated: true
       description: |
         Permite validar que el OTP provisto concuerde con el enviado por el proveedor, de ser así se
         retornará un valor “signature” que debe enviarse en la petición de procesamiento como “otp”
@@ -3284,6 +3333,23 @@ paths:
             schema:
               type: object
               properties: {}
+            examples:
+              Ejemplo:
+                value:
+                  auth:
+                    login: 6dd490faf9cb87a9862245da41170ff2
+                    tranKey: /K9f7yJpyptkPrADFWoWYsO5yZU=
+                    nonce: WW1aa01XWXlOVEEzT1RoalptSmpOalEzT1dNd05UTXlZMkUwWlRRME1UVT0=
+                    seed: '2018-01-29T17:09:38-05:00'
+                  instrument:
+                    card:
+                      number: '36545400000008'
+                    otp: '123456'
+                  payment:
+                    reference: TEST_20171108_144400
+                    amount:
+                      total: 120.1
+                      currency: USD
         description: |-
           **Parámetros**
 
