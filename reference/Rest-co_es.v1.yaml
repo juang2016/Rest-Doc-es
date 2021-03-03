@@ -2985,9 +2985,9 @@ paths:
                     total: 1000
         description: ''
     parameters: []
-  /rest/gateway/interests (solo Ecuador):
+  /rest/gateway/interests:
     post:
-      summary: Cálculo de Intereses
+      summary: Cálculo de Intereses (solo Ecuador)
       operationId: post-rest-gateway-interests
       responses:
         '200':
