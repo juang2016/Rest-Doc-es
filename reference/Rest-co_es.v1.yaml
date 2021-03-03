@@ -1059,7 +1059,7 @@ paths:
                   - processorFields
                   - additional
               examples:
-                Ejemplo:
+                Ejemplo para Colombia:
                   value:
                     status:
                       status: APPROVED
@@ -1285,7 +1285,7 @@ paths:
                 - payer
                 - buyer
             examples:
-              Ejemplo:
+              Ejemplo para Colombia:
                 value:
                   auth:
                     login: 6dd490faf9cb87a9862245da41170ff2
@@ -1315,6 +1315,67 @@ paths:
                       type: '00'
                       groupCode: C
                       installment: '1'
+                  payer:
+                    document: '8467451900'
+                    documentType: CC
+                    name: Miss Delia Schamberger Sr.
+                    surname: Wisozk
+                    email: tesst@gmail.com
+                    mobile: '3006108300'
+                  buyer:
+                    document: '8467451900'
+                    documentType: CC
+                    name: Miss Delia Schamberger Sr.
+                    surname: Wisozk
+                    email: tesst@gmail.com
+                    mobile: '3006108300'
+              Ejemplo para Ecuador:
+                value:
+                  auth:
+                    login: 45974e82a3867355d3471bc4a1f18a1c
+                    tranKey: /K9f7yJpyptkPrADFWoWYsO5yZU=
+                    nonce: WW1aa01XWXlOVEEzT1RoalptSmpOalEzT1dNd05UTXlZMkUwWlRRME1UVT0=
+                    seed: '2018-01-29T17:09:38-05:00'
+                  locale: es_EC
+                  payment:
+                    reference: TEST_20171108_144400
+                    description: Ipsam quia sunt dolore minus atque blanditiis corrupti.
+                    amount:
+                      taxes:
+                        - kind: ice
+                          amount: 4.8
+                          base: 40
+                        - kind: valueAddedTax
+                          amount: 7.6
+                          base: 40
+                      details:
+                        - kind: shipping
+                          amount: 2
+                        - kind: tip
+                          amount: 2
+                        - kind: subtotal
+                          amount: 40
+                      currency: USD
+                      total: 56.4
+                  ipAddress: 127.0.0.1
+                  userAgent: Mozilla/5.0 USER_AGENT HERE
+                  additional:
+                    SOME_ADDITIONAL: 'http://example.com/yourcheckout'
+                  instrument:
+                    token:
+                      token: bd8663e5f5635ff6e84e39171978de3aac5fb4cdf16b9c78ba1f8d9d049c86d2
+                      subtoken: '9684994211631111'
+                      franchise: visa
+                      franchiseName: Visa
+                      issuerName: 'JPMORGAN CHASE BANK, N.A.'
+                      lastDigits: '1111'
+                      validUntil: '2022-02-28'
+                    credit:
+                      code: '1'
+                      type: '02'
+                      groupCode: P
+                      installment: '24'
+                    otp: a8ecc59c2510a8ae27e1724ebf4647b5
                   payer:
                     document: '8467451900'
                     documentType: CC
