@@ -96,9 +96,23 @@ info:
     **agreementType**
 
     Indica el tipo de convenio con el cual se aplicará la dispersión
-    AIRLINE aplica para transacciones de tiquetes aéreos, donde se realizan dos transacciones, una a
+    `AIRLINE` aplica para transacciones de tiquetes aéreos, donde se realizan dos transacciones, una a
     nombre de la aerolínea (en esta se determina el valor total del tiquete) y otra a nombre de la
     agencia de viajes (Se determina el valor del fee de la agencia de viajes)
+
+    | Aerolínea  | agreement |
+    |-----------|-------------|
+    | AMERICAN AIRLINES  | 1 |
+    | DELTA | 6 |
+    | AIR CANADA  | 14 |
+    | UNITED AIRLINES  | 16 |
+    | AEROLINEAS ARGENTINAS  | 44 |
+    | TAP PORTUGAL | 47 |
+    | ALITALIA  | 55 |
+    | KLM  | 74 |
+    | IBERIA | 75 |
+    | GOL LINHAS AEREAS  | 127 |
+
 
     **Amount**
 
