@@ -2985,7 +2985,7 @@ paths:
                     total: 1000
         description: ''
     parameters: []
-  /rest/gateway/interests:
+  /rest/gateway/interests (solo Ecuador):
     post:
       summary: Cálculo de Intereses
       operationId: post-rest-gateway-interests
@@ -3005,8 +3005,6 @@ paths:
               schema:
                 type: object
                 properties: {}
-      tags:
-        - Solo Ecuador
       description: |
         Este servicio se debe consumir si la tarjeta requiere que se muestren los intereses
         (displayInterest en true) y como ejemplo de esta manera se muestran los valores en el servicio
@@ -3124,6 +3122,9 @@ paths:
           | auth | Authentication | Información de autenticación del sitio. |
           | instrument | Instrument | Estructura de entrada para la tarjeta o token. |
           | payment | Payment | Información simple del cobro a realizar. |
+      tags:
+        - Calculo de intereses
+    parameters: []
   /rest/otp/generate:
     parameters: []
     post:
