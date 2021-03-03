@@ -112,7 +112,21 @@ info:
     | KLM  | 74 |
     | IBERIA | 75 |
     | GOL LINHAS AEREAS  | 127 |
-
+    | LACSA | 133 |
+    | AVIANCA | 134 |
+    | AEROMEXICO  | 139 |
+    | KOREAN AIRLINEAS  | 180 |
+    | LUFTHANSA | 220 |
+    | COPA AIR | 230 |
+    | TAME | 269 |
+    | APG AIRLINES  | 279 |
+    | LATAM (LAN ECUADOR)  | 462 |
+    | AEROGAL  | 547 |
+    | AVIOR AIRLINEAS  | 742 |
+    | HELI AIR MONACO | 747 |
+    | AIR EUROPA  | 996 |
+    | ABC INTERJET | 996 |
+    | PLUS ULTRA  | 663 |
 
     **Amount**
 
