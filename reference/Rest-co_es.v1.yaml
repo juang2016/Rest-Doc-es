@@ -3012,8 +3012,106 @@ paths:
         content:
           application/json:
             schema:
+              description: ''
               type: object
-              properties: {}
+              properties:
+                auth:
+                  type: object
+                  properties:
+                    login:
+                      type: string
+                      minLength: 1
+                    tranKey:
+                      type: string
+                      minLength: 1
+                    nonce:
+                      type: string
+                      minLength: 1
+                    seed:
+                      type: string
+                      minLength: 1
+                  required:
+                    - login
+                    - tranKey
+                    - nonce
+                    - seed
+                instrument:
+                  type: object
+                  properties:
+                    card:
+                      type: object
+                      properties:
+                        number:
+                          type: string
+                          minLength: 1
+                      required:
+                        - number
+                    credit:
+                      type: object
+                      properties:
+                        code:
+                          type: number
+                        type:
+                          type: string
+                          minLength: 1
+                        groupCode:
+                          type: string
+                          minLength: 1
+                        installment:
+                          type: number
+                      required:
+                        - code
+                        - type
+                        - groupCode
+                        - installment
+                  required:
+                    - card
+                    - credit
+                payment:
+                  type: object
+                  properties:
+                    reference:
+                      type: string
+                      minLength: 1
+                    amount:
+                      type: object
+                      properties:
+                        total:
+                          type: number
+                        currency:
+                          type: string
+                          minLength: 1
+                      required:
+                        - total
+                        - currency
+                  required:
+                    - reference
+                    - amount
+              required:
+                - auth
+                - instrument
+                - payment
+            examples:
+              Ejemplo:
+                value:
+                  auth:
+                    login: 6dd490faf9cb87a9862245da41170ff2
+                    tranKey: /K9f7yJpyptkPrADFWoWYsO5yZU=
+                    nonce: WW1aa01XWXlOVEEzT1RoalptSmpOalEzT1dNd05UTXlZMkUwWlRRME1UVT0=
+                    seed: '2018-01-29T17:09:38-05:00'
+                  instrument:
+                    card:
+                      number: '36545400000008'
+                    credit:
+                      code: 1
+                      type: '22'
+                      groupCode: M
+                      installment: 12
+                  payment:
+                    reference: testing_12
+                    amount:
+                      total: 120.1
+                      currency: USD
         description: |
           **Parámetros**
 
