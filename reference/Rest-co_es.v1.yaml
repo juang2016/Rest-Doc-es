@@ -869,7 +869,7 @@ paths:
         Este servicio proporciona información sobre la tarjeta del usuario que se va a procesar, tal como qué servicios son los que se usarán para ella y los tipos de crédito, si aplica, que hay para esta, si no hay tipos de crédito se retorna un arreglo vacío y si los hay, se debe iterar cada tipo de crédito con los installments que se encuentran en el arreglo.
       tags:
         - Solicitar informacion de una Tarjeta
-  /gateway/process/:
+  /rest/gateway/process/:
     post:
       summary: Cobrar Tokenizacion
       operationId: post-gateway-process
@@ -1409,7 +1409,8 @@ paths:
       description: 'Este servicio permite que se realice el cobro a la tarjeta del usuario ya tokenizada, los parámetros del instrument son variables, si no se pide tipo de crédito ni otp no es necesario enviar esas variables, payer es siempre requerido, buyer es opcional pero recomendado.'
       tags:
         - Procesamiento de transaccion
-  /gateway/process:
+    parameters: []
+  /rest/gateway/process:
     post:
       summary: Procesamiento de transacción
       operationId: post-gateway-process
@@ -1850,6 +1851,7 @@ paths:
       description: 'Este servicio permite que se realice el cobro a la tarjeta del usuario, los parámetros del instrument son variables, si no se pide tipo de crédito ni otp no es necesario enviar esas variables, payer es siempre requerido, buyer es opcional pero recomendado.'
       tags:
         - Procesamiento de transaccion
+    parameters: []
   '':
     post:
       summary: GetAuthentication
@@ -1960,7 +1962,7 @@ paths:
       tags:
         - Autenticacion
     parameters: []
-  /gateway/tokenize:
+  /rest/gateway/tokenize:
     post:
       summary: Tokenización (tokenize)
       operationId: post-gateway-tokenize
@@ -2199,7 +2201,8 @@ paths:
           | instrument | Instrument | Estructura de entrada para la tarjeta o token. |
           | ipAddress | string | IP del usuario que realiza la transacción. |
           | userAgent | string | UserAgent del usuario que realiza la transacción. |
-  /gateway/transaction:
+    parameters: []
+  /rest/gateway/transaction:
     post:
       summary: Reverso de transacción
       operationId: post-gateway-transaction
@@ -2493,7 +2496,8 @@ paths:
           | internalReference | bigint | Código único que representa la transacción en PlacetoPay. |
           | authorization | string | Código de aprobación de la transacción dado por el proveedor. |
           | action | string | Acción a realizar sobre la transacción (reverse). |
-  /gateway/search:
+    parameters: []
+  /rest/gateway/search:
     post:
       summary: Búsqueda de transacciones
       operationId: post-gateway-search
@@ -2932,5 +2936,6 @@ paths:
                     currency: COP
                     total: 1000
         description: ''
+    parameters: []
 components:
   schemas: {}
