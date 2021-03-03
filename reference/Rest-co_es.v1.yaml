@@ -3127,7 +3127,7 @@ paths:
   /rest/otp/generate:
     parameters: []
     post:
-      summary: Generación de OTP
+      summary: Generación de OTP (solo Ecuador)
       operationId: post-rest-otp-generate
       responses:
         '200':
