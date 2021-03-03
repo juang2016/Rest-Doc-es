@@ -114,6 +114,7 @@ info:
     | KLM  | 74 |
     | IBERIA | 75 |
     | GOL LINHAS AEREAS  | 127 |
+
     **Amount**
 
     Estructura que contiene la información acerca del pago de la transacción requerida al servicio web
