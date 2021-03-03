@@ -3261,9 +3261,9 @@ paths:
           | instrument | Instrument | Estructura de entrada para la tarjeta o token. |
       tags:
         - Proceso OTP
-  /rest/otp/validate (solo Ecuador):
+  /rest/otp/validate:
     post:
-      summary: Validación de OTP
+      summary: Validación de OTP (solo Ecuador)
       operationId: post-rest-otp-validate
       responses:
         '200':
