@@ -1340,6 +1340,8 @@ paths:
           | userAgent | string | UserAgent del usuario que realiza la transacción. |
           | additional | string[] | Arreglo clave valor de datos que se deseen adicionar y que serán almacenados. |
       description: 'Este servicio permite que se realice el cobro a la tarjeta del usuario ya tokenizada, los parámetros del instrument son variables, si no se pide tipo de crédito ni otp no es necesario enviar esas variables, payer es siempre requerido, buyer es opcional pero recomendado.'
+      tags:
+        - Procesamiento de transaccion
   /gateway/process:
     post:
       summary: Procesamiento de transacción
@@ -1721,6 +1723,8 @@ paths:
           | userAgent | string | UserAgent del usuario que realiza la transacción. |
           | additional | string[] | Arreglo clave valor de datos que se deseen adicionar y que serán almacenados. |
       description: 'Este servicio permite que se realice el cobro a la tarjeta del usuario, los parámetros del instrument son variables, si no se pide tipo de crédito ni otp no es necesario enviar esas variables, payer es siempre requerido, buyer es opcional pero recomendado.'
+      tags:
+        - Procesamiento de transaccion
   '':
     post:
       summary: GetAuthentication
