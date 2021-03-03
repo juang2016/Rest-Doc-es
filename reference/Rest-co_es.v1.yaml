@@ -3259,7 +3259,7 @@ paths:
           | auth | Authentication | Información de autenticación del sitio. |
           | instrument | Instrument | Estructura de entrada para la tarjeta o token. |
       tags:
-        - Solo Ecuador
+        - Proceso OTP
   /rest/otp/validate:
     post:
       summary: Validación de OTP
