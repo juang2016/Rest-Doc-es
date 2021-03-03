@@ -2269,7 +2269,15 @@ paths:
                 - action
             examples:
               Ejemplo:
-                value: {}
+                value:
+                  auth:
+                    login: 6dd490faf9cb87a9862245da41170ff2
+                    tranKey: JUfKi8+W//kX43WZd8FcnNsdl7zkaeAQdmSOudWcVi0=
+                    nonce: MzgwYWYwMjc2ZWUzODA5YmI1MDQ1YmNjYzdlNzY1MTY=
+                    seed: '2021-03-02T17:03:50+01:00'
+                  internalReference: 1505723583
+                  authorization: '999999'
+                  action: reverse
         description: |
           **Parámetros**
 
