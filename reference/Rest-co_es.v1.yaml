@@ -592,6 +592,8 @@ paths:
           | auth | Authentication | Información de autenticación del sitio. |
           | internalReference | bigint | Código único que representa la transacción en PlacetoPay. |
       description: Permite consultar una transaccion.
+      tags:
+        - Consulta de una transaccion
   /rest/gateway/information:
     post:
       summary: Solicitud de Información
