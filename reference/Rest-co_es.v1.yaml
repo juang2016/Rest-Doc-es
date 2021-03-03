@@ -1828,6 +1828,8 @@ paths:
                   login: 6dd490faf9cb87a9862245da41170ff2
                   trankey: Q0nj0QeRN0h1EH3H
         description: ''
+      tags:
+        - Autenticacion
     parameters: []
 components:
   schemas: {}
