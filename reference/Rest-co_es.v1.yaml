@@ -2049,7 +2049,7 @@ paths:
                 - ipAddress
                 - userAgent
             examples:
-              Ejemplo:
+              Ejemplo para Colombia:
                 value:
                   auth:
                     login: 6dd490faf9cb87a9862245da41170ff2
@@ -2066,6 +2066,26 @@ paths:
                       expirationMonth: '02'
                       expirationYear: '22'
                       cvv: '123'
+                  ipAddress: 127.0.0.1
+                  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
+              Ejemplo para Ecuador:
+                value:
+                  auth:
+                    login: 6dd490faf9cb87a9862245da41170ff2
+                    tranKey: xkDytkHMxIqiY1cCk+QjBXS0QjM=
+                    nonce: T0RRM05UWTRNV0kyTWpJM1ptRXdZVFZoWmpnd1lqWmpNV0UzWW1VMU5EST0=
+                    seed: '2017-11-01T16:23:21-05:00'
+                  payer:
+                    name: Dr. Wilfredo Cole Sr.
+                    surname: Corwin
+                    email: jewell32@abbott.com
+                  instrument:
+                    card:
+                      number: '4111111111111111'
+                      expirationMonth: '02'
+                      expirationYear: '20'
+                      cvv: '123'
+                    otp: '123456'
                   ipAddress: 127.0.0.1
                   userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
 components:
