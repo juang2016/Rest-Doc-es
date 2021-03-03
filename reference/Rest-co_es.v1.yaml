@@ -3018,5 +3018,41 @@ paths:
           | instrument | Instrument | Estructura de entrada para la tarjeta o token. |
       tags:
         - Solo Ecuador
+  /rest/otp/validate:
+    post:
+      summary: Validación de OTP
+      operationId: post-rest-otp-validate
+      responses:
+        '200':
+          description: |
+            **Parámetros**
+
+            | Nombre | Tipo | Descripción |
+            |-----------|------|-------------|
+            | status | Status | Información del estado de la petición. |
+            | provider | string | Determina el proveedor que procesa la transacción (INTERDIN, DATAFAST, BANRED) |
+            | signature | string | Firma asignada a la comprobación de OTP dela transacción, necesaria para los filtros de
+            seguridad, vacío en caso de no proporcionar el OTP correcto. |
+            | validated | bool  | Determina si el OTP ha sido verificado. |
+      description: |
+        Permite validar que el OTP provisto concuerde con el enviado por el proveedor, de ser así se
+        retornará un valor “signature” que debe enviarse en la petición de procesamiento como “otp”
+        esto con el fin de que se tome en cuenta a la hora de analizar la transacción por los filtros de
+        seguridad
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+        description: |-
+          **Parámetros**
+
+          | Nombre | Tipo | Descripción |
+          |-----------|------|-------------|
+          | locale | string | Definido con los códigos ISO 639 (language) y ISO 3166-1 alpha-2 (2-letras del país) ej. en_US, es_EC, es_CO |
+          | auth | Authentication | Información de autenticación del sitio. |
+          | instrument | Instrument | Estructura de entrada para la tarjeta o token. |
+          | payment | Payment | Información simple del cobro a realizar. |
 components:
   schemas: {}
