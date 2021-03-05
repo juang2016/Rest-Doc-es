@@ -314,6 +314,8 @@ servers:
     description: Modo Pruebas Colombia
   - url: 'https://test.placetopay.ec/'
     description: Modo Pruebas Ecuador
+  - url: 'https://authe-ptp.herokuapp.com/uth-ec.php'
+    description: Endpint Autenticación
 paths:
   /rest/gateway/query:
     post:
